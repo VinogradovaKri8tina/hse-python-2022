@@ -1,6 +1,5 @@
 from pathlib import Path
 from typing import Dict, Any, List, Optional
-import re
 import csv
 
 def count_words(text: str) -> Dict[str, int]:
@@ -121,6 +120,5 @@ def csv_reader(header: str) -> int:
         for row in csv_reader:
             data.append(row[header])
         amount = len(set(data))
-
     return amount
     return 0

@@ -47,7 +47,7 @@ def is_phone_correct(phone_number: str) -> bool:
     """
 
     # пиши код здесь
-   if (phone_number[0] == '+' and phone_number[1] == '7' and phone_number[2:].isdigit() == True and
+    if (phone_number[0] == '+' and phone_number[1] == '7' and phone_number[2:].isdigit() == True and
             len(phone_number) == 12):
         result = True
     else:

@@ -93,5 +93,10 @@ def csv_reader(header: str) -> int:
     """
 
     # пиши свой код здесь
-
+    data = []
+    with open(get_path_to_file()) as csv_file:
+        csv_reader = csv.DictReader(csv_file, delimiter="," )
+        for row in csv_reader:
+            data.append(row[header])
+        amount = len(set(data))
     return 0

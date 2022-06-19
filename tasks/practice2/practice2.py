@@ -1,5 +1,4 @@
 from typing import Iterable
-import re
 import random
 UNCULTURED_WORDS = ('kotleta', 'pirog')
 
@@ -14,7 +13,7 @@ def greet_user(name: str) -> str:
     """
 
     # пиши код здесь
-    greeting = f'Hello, {name}!'
+    greeting = "Hello " + name
     return greeting
 
 
@@ -86,13 +85,15 @@ def moderate_text(text: str, uncultured_words: Iterable[str]) -> str:
     """
 
     # пиши код здесь
-    text = text.replace('\'', '').replace('\"', '')
-    new_text = ' '.join(text.split())
-    result = new_text[0].upper() + new_text[1:].lower()
-
-    for x in uncultured_words:
-        result = result.replace(x, '#'*len(x))
-    return result
+    text = text.strip()
+    text = text.capitalize()
+    text = text.replace("'", '')
+    text = text.replace('"', '')
+    for sl in UNCULTURED_WORDS:
+        if sl in text:
+            zamen = "#" * len(sl)
+            text = text.replace(sl, zamen)
+    result = text
 
 
 def create_request_for_loan(user_info: str) -> str:

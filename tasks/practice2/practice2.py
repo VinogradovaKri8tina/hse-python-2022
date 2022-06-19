@@ -1,5 +1,6 @@
-from typing import Iterable
 import random
+from typing import Iterable
+
 UNCULTURED_WORDS = ('kotleta', 'pirog')
 
 
@@ -31,7 +32,7 @@ def get_amount() -> float:
 
     # пиши код здесь
     
-    amount = float('{:.2f}'.format(random.uniform(100, 1000000)))
+    amount  = float(random.randrange(100, 1000000))
     return amount
 
 
@@ -46,11 +47,11 @@ def is_phone_correct(phone_number: str) -> bool:
     """
 
     # пиши код здесь
-    result = False
-    if re.match(r"\+7\d{10}$", phone_number):
+   if (phone_number[0] == '+' and phone_number[1] == '7' and phone_number[2:].isdigit() == True and
+            len(phone_number) == 12):
         result = True
-    return result
-
+    else:
+        result = False
 
 def is_amount_correct(current_amount: float, transfer_amount: str) -> bool:
     """
@@ -65,7 +66,10 @@ def is_amount_correct(current_amount: float, transfer_amount: str) -> bool:
     """
 
     # пиши код здесь
-        result = current_amount >= float(transfer_amount)
+    if(current_amount >= (float(transfer_amount))):
+        result = True
+    else:
+        result = False
     return result
 
 

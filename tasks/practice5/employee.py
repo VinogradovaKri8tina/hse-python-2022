@@ -32,21 +32,28 @@ class Employee:
     name: str
     position: str
     _salary: int
-
+   
     def __init__(self, name: str, position: str, salary: int):
         """
         Задача: реализовать конструктор класса, чтобы все тесты проходили
         """
 
         # пиши свой код здесь
-
+        if isinstance(name, str) and isinstance(position, str) and isinstance(salary, int):
+            self.name: str = name
+            self.position: str = position
+            self._salary: int = salary
+        else:
+            raise ValueError
+            
     def get_salary(self) -> int:
         """
         Метод возвращает зарплату сотрудника.
         """
 
         # пиши свой код здесь
-
+        return self._salary
+    
     def __eq__(self, other: object) -> bool:
         """
         Задача: реализовать метод сравнение двух сотрудников, чтобы все тесты проходили.
@@ -56,7 +63,13 @@ class Employee:
         """
 
         # пиши свой код здесь
-
+        if not isinstance(other, Employee):
+            raise TypeError
+        try:
+            return get_position_level(other.position) == get_position_level(self.position)
+        except:
+            raise ValueError
+            
     def __str__(self):
         """
         Задача: реализовать строковое представление объекта.
@@ -64,7 +77,9 @@ class Employee:
         """
 
         # пиши свой код здесь
-
+        str = "name: " + self.name + " position: " + self.position
+        return str
+    
     def __hash__(self):
         return id(self)
 
@@ -83,7 +98,8 @@ class Developer(Employee):
         """
 
         # пиши свой код здесь
-
+        super().__init__(name, self.position, salary)
+        self.language = language
 
 class Manager(Employee):
     """
@@ -98,3 +114,4 @@ class Manager(Employee):
         """
 
         # пиши свой код здесь
+        super().__init__(name, self.position, salary)
